@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="bin">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/bin/jimm-DEFAULT-light.zip!/" />
+      <root url="jar://$PROJECT_DIR$/dist/bin/Jimm.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

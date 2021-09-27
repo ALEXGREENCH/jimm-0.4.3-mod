@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Created-By: KICQ Project
+MIDlet-Name: KICQ
+MIDlet-Version: 0.4.4
+MIDlet-Vendor: KICQ Project
+MIDlet-Jar-URL: KICQ.jar
+MIDlet-Jar-Size: ###SIZE###
+MIDlet-Icon: icon.png
+MicroEdition-Profile: ###MIDP-PROFILE###
+MicroEdition-Configuration: CLDC-1.0
+MIDlet-Description: KICQ - analogue of ICQ on the old protocol
+MIDlet-Info-URL: http://narodweb.ru/kicq.html
+MIDlet-1: Jimm,icon.png,jimm.Jimm
+Jimm-Version: 0.4.4
+Background: True
+FlipInsensitive: True

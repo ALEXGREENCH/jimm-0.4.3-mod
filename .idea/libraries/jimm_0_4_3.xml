@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="jimm-0.4.3">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/jimm-0.4.3_build3.zip!/" />
+      <root url="jar://$PROJECT_DIR$/jimm-0.4.4_build2.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

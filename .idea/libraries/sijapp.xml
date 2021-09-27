@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="sijapp">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/util/sijapp/dist/lib/sijapp.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

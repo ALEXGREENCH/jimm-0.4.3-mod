@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="jarsizetask">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/util/jarsizetask/dist/lib/jarsizetask.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/build/build.iml" filepath="$PROJECT_DIR$/build/build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/util/jarsizetask/jarsizetask.iml" filepath="$PROJECT_DIR$/util/jarsizetask/jarsizetask.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jimm-0.4.3.iml" filepath="$PROJECT_DIR$/jimm-0.4.3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/util/sijapp/sijapp.iml" filepath="$PROJECT_DIR$/util/sijapp/sijapp.iml" />
+    </modules>
+  </component>
+</project>
