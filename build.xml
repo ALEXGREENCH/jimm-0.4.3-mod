@@ -74,7 +74,7 @@ Author(s): Manuel Linsmayer, Andreas Rossbacher
 	<!--      FILES   - module for transferring files                           -->
 	<!--      SMILES  - module for using emotions int messages text             --> 
 	<!--      PROXY   - module for connecting via a socks proxy                 --> 
-	<property name="modules"           value="TRAFFIC, HISTORY, FILES, SMILES, PROXY" />
+	<property name="modules"           value="HISTORY, SMILES" />
 	<!--  *******************************************************************   -->
 	<!--  This value is a comma separated list of languages packs which         -->
 	<!--  should be included in the build. Currently, the distribution          -->

@@ -69,6 +69,14 @@ public class Text_RU extends ResourceBundle {
         resources.put("next", "Следующий");
         // #sijapp cond.end#
 
+        resources.put("monday", "Понедельник");
+        resources.put("tuesday", "Вторник");
+        resources.put("wednesday", "Среда");
+        resources.put("thursday", "Четверг");
+        resources.put("friday", "Пятница");
+        resources.put("saturday", "Суббота");
+        resources.put("sunday", "Воскресенье");
+
         resources.put(".", ".");
         resources.put("about", "О программе");
         resources.put("about_info", "KICQ - аналог ICQ на старом протоколе\n\nKICQ - это аналог ICQ, основанный на старом протоколе OSCAR.\nВ основе - проект с открытым исходным кодом IserverD.\nТо есть это та самая аська (ну почти), что была у тебя в телефоне в 2008.\nАдрес сервера 195.66.114.37\n\nВерсия 0.4.4\nУстройство: ###TARGET###\nМодули: ###MODULES###\n\nhttp://narodweb.ru/kicq.html");

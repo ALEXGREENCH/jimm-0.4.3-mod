@@ -1004,9 +1004,9 @@ public class ContactList implements CommandListener, VirtualTreeCommands
         if (traffic != 0) {
             text = ResourceBundle.getString("contact_list");
             if (text.length() > 4) sep = "-";
-            text += sep + traffic + ResourceBundle.getString("kb") + sep + Util.getDateString(true);
+            text += sep + traffic + ResourceBundle.getString("kb") + sep + Util.getDateString(true, false);
         } else
-            text = ResourceBundle.getString("contact_list") + sep + Util.getDateString(true);
+            text = ResourceBundle.getString("contact_list") + sep + Util.getDateString(true, false);
 
         //#sijapp cond.if target is "MIDP2" | target is "MOTOROLA" | target is "SIEMENS2"#
         tree.setTitle(text);

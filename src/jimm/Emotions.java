@@ -39,8 +39,17 @@ import java.io.InputStream;
 import java.util.Vector;
 
 public class Emotions implements VirtualListCommands, CommandListener {
-    static private final Command cmdOk = new Command(ResourceBundle.getString("select"), Command.OK, 1);
-    static private final Command cmdCancel = new Command(ResourceBundle.getString("cancel"), Command.BACK, 2);
+
+    static private final Command cmdOk = new Command(
+            ResourceBundle.getString("select"),
+            Command.OK,
+            1
+    );
+    static private final Command cmdCancel = new Command(
+            ResourceBundle.getString("cancel"),
+            Command.BACK,
+            2
+    );
     final private ImageList images = new ImageList();
     final private Vector findedEmotions = new Vector();
     final private Vector textCorr = new Vector();
@@ -312,14 +321,26 @@ public class Emotions implements VirtualListCommands, CommandListener {
 
                 xb = xa + itemHeight;
 
+                if (isSelected && (i == curCol)) {
+                    // TODO: дублирование
+                    int cursorColor = 0x95cc5e; // TODO: OPTION_COLOR_CURSOR
+                    drawGradient(g, xa + 1, y1 + 1, itemHeight, y2 - y1 - 1, cursorColor, 16, -32, 0);
+                    g.setColor(transformColorLight(cursorColor, -48));
+
+                    g.drawLine(xa + 1, y1, xb - 1, y1);
+                    g.drawLine(xb, y1 + 1, xb, y2 - 1);
+                    g.drawLine(xb - 1, y2, xa + 1, y2);
+                    g.drawLine(xa, y2 - 1, xa, y1 + 1);
+
+                    //g.setColor(this.getTextColor());
+                    //g.setStrokeStyle(Graphics.DOTTED);
+                    //g.drawRect(xa, y1, itemHeight - 1, y2 - y1 - 1);
+                }
+
                 if (smileIdx < imagesCount)
                     g.drawImage(images.elementAt(smileIdx), xa + 3, y1 + 3, Graphics.TOP | Graphics.LEFT);
 
-                if (isSelected && (i == curCol)) {
-                    g.setColor(this.getTextColor());
-                    g.setStrokeStyle(Graphics.DOTTED);
-                    g.drawRect(xa, y1, itemHeight - 1, y2 - y1 - 1);
-                }
+
                 xa = xb;
             }
         }

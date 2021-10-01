@@ -23,12 +23,10 @@
 
 package DrawControls;
 
-import jimm.Options;
-
-import javax.microedition.lcdui.Image;
 import javax.microedition.lcdui.Canvas;
-import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.Font;
+import javax.microedition.lcdui.Graphics;
+import javax.microedition.lcdui.Image;
 
 
 //! This class is base class of owner draw list controls
@@ -460,7 +458,7 @@ public abstract class VirtualList extends Canvas {
         int itemCount = getSize();
         boolean haveToShowScroller = ((itemCount > visCount) && (itemCount > 0));
         int color = transformColorLight(transformColorLight(bkgrndColor, 32), -32);
-        if (color == 0) color = 0x808080;
+        if (color == 0) color = 0x797aa8;
         g.setStrokeStyle(Graphics.SOLID);
         g.setColor(color);
         g.fillRect(width + 1, topY, scrollerWidth - 1, height - topY);
@@ -511,7 +509,7 @@ public abstract class VirtualList extends Canvas {
         }
 
         if (grCursorY1 != -1) {
-            int cursorColor = 0xb8d8f8; // TODO: OPTION_COLOR_CURSOR
+            int cursorColor = 0x95cc5e; // TODO: OPTION_COLOR_CURSOR
             drawGradient(g, 1, grCursorY1 + 1, itemWidth - 2, grCursorY2 - grCursorY1 - 1, cursorColor, 16, -32, 0);
             g.setColor(transformColorLight(cursorColor, -48));
             boolean isCursorUpper = topItem >= 1 && isItemSelected(topItem - 1);
@@ -548,7 +546,7 @@ public abstract class VirtualList extends Canvas {
     void destroy() {}
 
     // change light of color
-    static private int transformColorLight(int color, int light) {
+    public static int transformColorLight(int color, int light) {
         int r = (color & 0xFF) + light;
         int g = ((color & 0xFF00) >> 8) + light;
         int b = ((color & 0xFF0000) >> 16) + light;
@@ -646,4 +644,11 @@ public abstract class VirtualList extends Canvas {
         return dontRepaint;
     }
 
+    static public int getInverseColor(int color)
+    {
+        int r = (color & 0xFF);
+        int g = ((color & 0xFF00) >> 8);
+        int b = ((color & 0xFF0000) >> 16);
+        return ((r + g + b) > 3 * 127) ? 0 : 0xFFFFFF;
+    }
 }

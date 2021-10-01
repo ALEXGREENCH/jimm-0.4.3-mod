@@ -20,10 +20,10 @@
  Version: 0.4.3  Date: 2005/11/18
  Author(s): Manuel Linsmayer, Andreas Rossbacher
  *******************************************************************************/
-
 package jimm;
 
 import DrawControls.TextList;
+import DrawControls.VirtualList;
 import jimm.comm.ConnectAction;
 //  #sijapp cond.if target is "MIDP2" | target is "MOTOROLA" | target is "SIEMENS2"#
 //  #sijapp cond.if modules_FILES is "true"#
@@ -96,6 +96,10 @@ public class SplashCanvas extends Canvas {
     private static final Font font = Font.getFont(Font.FACE_SYSTEM, Font.STYLE_ITALIC, Font.SIZE_SMALL);
     private static final int height = font.getHeight();
 
+    // TODO: temp...
+    //int bgColor = Options.getInt(Options.OPTION_COLOR_SBACK);
+    int bgColor = 0x000000;
+    int txtColor = VirtualList.getInverseColor(bgColor); // а реверс соответственно белый :)
 
     // Initializer block
     static {
@@ -354,20 +358,25 @@ public class SplashCanvas extends Canvas {
         }
 
         // Draw white bottom bar
-        g.setColor(255, 255, 255);
+        g.setColor(109, 189, 62);
         g.setStrokeStyle(Graphics.DOTTED);
         g.drawLine(0, this.getHeight() - SplashCanvas.height - 3, this.getWidth(), this.getHeight() - SplashCanvas.height - 3);
 
         // Draw message
         if (Jimm.jimm.getOptionsRef() != null) {
-            g.setColor(255, 255, 255);
+            g.setColor(247, 2, 1);
             g.setFont(SplashCanvas.font);
             // Draw the date bellow notice if set up to do so
             if (Jimm.jimm.getOptionsRef().getBooleanOption(Options.OPTION_DISPLAY_DATE)) {
-                g.drawString(Util.getDateString(false), this.getWidth() / 2, 12, Graphics.TOP | Graphics.HCENTER);
+                g.setColor(txtColor);
+                g.setFont(SplashCanvas.logoFont);
+                g.drawString(Util.getDateString(false, false), getWidth() / 2, 12, Graphics.TOP | Graphics.HCENTER);
+                g.drawString(Util.getCurrentDay(), getWidth() / 2, 13 + SplashCanvas.logoFont.getHeight(), Graphics.TOP | Graphics.HCENTER);
             }
             // Draw the progressbar message
             if ((this.message != null) && (this.message.length() > 0)) {
+                g.setColor(0x6fa5b5);
+                g.setFont(SplashCanvas.font);
                 g.drawString(this.message, this.getWidth() / 2, this.getHeight(), Graphics.BOTTOM | Graphics.HCENTER);
             }
         }
@@ -382,13 +391,13 @@ public class SplashCanvas extends Canvas {
         // Draw current progress
         int progressPx = this.getWidth() * this.progress / 100;
         g.setClip(0, this.getHeight() - SplashCanvas.height - 2, progressPx, SplashCanvas.height + 2);
-        g.setColor(255, 255, 255);
+        g.setColor(149, 204, 94);
         g.fillRect(0, this.getHeight() - SplashCanvas.height - 2, progressPx, SplashCanvas.height + 2);
         if (Jimm.jimm.getOptionsRef() != null) {
             g.setColor(0, 0, 0);
             // Draw the date bellow notice if set up to do so
             if (Jimm.jimm.getOptionsRef().getBooleanOption(Options.OPTION_DISPLAY_DATE)) {
-                g.drawString(Util.getDateString(false), this.getWidth() / 2, 12, Graphics.TOP | Graphics.HCENTER);
+                g.drawString(Util.getDateString(false, false), this.getWidth() / 2, 12, Graphics.TOP | Graphics.HCENTER);
             }
 
             // Draw the progressbar message
