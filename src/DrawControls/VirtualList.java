@@ -23,6 +23,8 @@
 
 package DrawControls;
 
+import jimm.util.GreenchUtils;
+
 import javax.microedition.lcdui.Canvas;
 import javax.microedition.lcdui.Font;
 import javax.microedition.lcdui.Graphics;
@@ -457,12 +459,16 @@ public abstract class VirtualList extends Canvas {
         int height = getHeight();
         int itemCount = getSize();
         boolean haveToShowScroller = ((itemCount > visCount) && (itemCount > 0));
-        int color = transformColorLight(transformColorLight(bkgrndColor, 32), -32);
+        int color = GreenchUtils.transformColorLight(
+                GreenchUtils.transformColorLight(
+                        bkgrndColor, 32
+                ), -32
+        );
         if (color == 0) color = 0x797aa8;
         g.setStrokeStyle(Graphics.SOLID);
         g.setColor(color);
         g.fillRect(width + 1, topY, scrollerWidth - 1, height - topY);
-        g.setColor(transformColorLight(color, -64));
+        g.setColor(GreenchUtils.transformColorLight(color, -64));
         g.drawLine(width, topY, width, height);
         if (haveToShowScroller) {
             int sliderSize = (height - topY) * visCount / itemCount;
@@ -471,9 +477,9 @@ public abstract class VirtualList extends Canvas {
             int y2 = y1 + sliderSize;
             g.setColor(color);
             g.fillRect(width + 2, y1 + 2, scrollerWidth - 3, y2 - y1 - 3);
-            g.setColor(transformColorLight(color, -192));
+            g.setColor(GreenchUtils.transformColorLight(color, -192));
             g.drawRect(width, y1, scrollerWidth - 1, y2 - y1 - 1);
-            g.setColor(transformColorLight(color, 96));
+            g.setColor(GreenchUtils.transformColorLight(color, 96));
             g.drawLine(width + 1, y1 + 1, width + 1, y2 - 2);
             g.drawLine(width + 1, y1 + 1, width + scrollerWidth - 2, y1 + 1);
         }
@@ -509,14 +515,13 @@ public abstract class VirtualList extends Canvas {
         }
 
         if (grCursorY1 != -1) {
-            int cursorColor = 0x95cc5e; // TODO: OPTION_COLOR_CURSOR
-            drawGradient(g, 1, grCursorY1 + 1, itemWidth - 2, grCursorY2 - grCursorY1 - 1, cursorColor, 16, -32, 0);
-            g.setColor(transformColorLight(cursorColor, -48));
-            boolean isCursorUpper = topItem >= 1 && isItemSelected(topItem - 1);
-            if (!isCursorUpper) g.drawLine(1, grCursorY1, itemWidth - 2, grCursorY1);
-            g.drawLine(0, grCursorY1 + 1, 0, grCursorY2 - 1);
-            g.drawLine(itemWidth - 1, grCursorY1 + 1, itemWidth - 1, grCursorY2 - 1);
-            g.drawLine(1, grCursorY2, itemWidth - 2, grCursorY2);
+            GreenchUtils.drawGradientAndFrameBG(
+                    g,
+                    0,
+                    grCursorY1,
+                    itemWidth,
+                    grCursorY2,
+                    0x95cc5e); // TODO: OPTION_COLOR_CURSOR
         }
 
         // Draw items
@@ -530,33 +535,6 @@ public abstract class VirtualList extends Canvas {
         }
 
         return y;
-    }
-
-    public static void drawGradient(Graphics g, int x, int y, int w, int h, int color, int count, int light1, int light2) {
-        for (int i = 0; i < count; i++) {
-            g.setColor(transformColorLight(color, (light2 - light1) * i / (count - 1) + light1));
-            int y1 = y + (i * h) / count;
-            int y2 = y + (i * h + h) / count;
-            g.fillRect(x, y1, w, y2 - y1);
-        }
-    }
-
-    void init() {}
-
-    void destroy() {}
-
-    // change light of color
-    public static int transformColorLight(int color, int light) {
-        int r = (color & 0xFF) + light;
-        int g = ((color & 0xFF00) >> 8) + light;
-        int b = ((color & 0xFF0000) >> 16) + light;
-        if (r < 0) r = 0;
-        if (r > 255) r = 255;
-        if (g < 0) g = 0;
-        if (g > 255) g = 255;
-        if (b < 0) b = 0;
-        if (b > 255) b = 255;
-        return r | (g << 8) | (b << 16);
     }
 
     // private void paintAllOnGraphics(Graphics graphics)

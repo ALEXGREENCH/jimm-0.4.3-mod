@@ -374,6 +374,12 @@ public class Options {
     public static final int CLRSCHHEME_BLUE = 3; // retrieving highlight color
     public static final int CLRSCHHEME_CURS = 4; // retrieving curr mess highlight color
 
+
+
+    public static final int OPTION_COLOR_CURSOR = 0x95cc5e; // retrieving curr mess highlight color
+
+
+
     final static private int[] colors =
             {
                     0xFFFFFF, 0x000000, 0x0000FF, 0x404040,

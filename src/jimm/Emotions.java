@@ -26,6 +26,7 @@ package jimm;
 //#sijapp cond.if modules_SMILES is "true" #
 
 import DrawControls.*;
+import jimm.util.GreenchUtils;
 import jimm.util.ResourceBundle;
 
 import javax.microedition.lcdui.Command;
@@ -302,14 +303,13 @@ public class Emotions implements VirtualListCommands, CommandListener {
             showCurrSmileName();
         }
 
-        protected void drawItemData
-                (
+        protected void drawItemData(
                         Graphics g,
                         boolean isSelected,
                         int index,
                         int x1, int y1, int x2, int y2,
                         int fontHeight
-                ) {
+        ) {
             int xa, xb;
             int startIdx = cols * index;
             int imagesCount = images.size();
@@ -318,23 +318,15 @@ public class Emotions implements VirtualListCommands, CommandListener {
                 if (startIdx >= selEmotions.size()) break;
                 Object[] data = (Object[]) selEmotions.elementAt(startIdx);
                 int smileIdx = ((Integer) data[0]).intValue();
-
                 xb = xa + itemHeight;
 
                 if (isSelected && (i == curCol)) {
-                    // TODO: дублирование
-                    int cursorColor = 0x95cc5e; // TODO: OPTION_COLOR_CURSOR
-                    drawGradient(g, xa + 1, y1 + 1, itemHeight, y2 - y1 - 1, cursorColor, 16, -32, 0);
-                    g.setColor(transformColorLight(cursorColor, -48));
-
-                    g.drawLine(xa + 1, y1, xb - 1, y1);
-                    g.drawLine(xb, y1 + 1, xb, y2 - 1);
-                    g.drawLine(xb - 1, y2, xa + 1, y2);
-                    g.drawLine(xa, y2 - 1, xa, y1 + 1);
-
-                    //g.setColor(this.getTextColor());
-                    //g.setStrokeStyle(Graphics.DOTTED);
-                    //g.drawRect(xa, y1, itemHeight - 1, y2 - y1 - 1);
+                    GreenchUtils.drawGradientAndFrameBG(g,
+                            xa,
+                            y1,
+                            xb,
+                            y2,
+                            0x95cc5e); // TODO: OPTION_COLOR_CURSOR
                 }
 
                 if (smileIdx < imagesCount)
