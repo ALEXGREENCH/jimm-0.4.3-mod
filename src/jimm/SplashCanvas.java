@@ -375,7 +375,7 @@ public class SplashCanvas extends Canvas {
             }
             // Draw the progressbar message
             if ((this.message != null) && (this.message.length() > 0)) {
-                g.setColor(0x6fa5b5);
+                g.setColor(0xb56f6f);
                 g.setFont(SplashCanvas.font);
                 g.drawString(this.message, this.getWidth() / 2, this.getHeight(), Graphics.BOTTOM | Graphics.HCENTER);
             }
