@@ -1,27 +1,3 @@
-/*******************************************************************************
- Jimm - Mobile Messaging - J2ME ICQ clone
- Copyright (C) 2003-04  Jimm Project
-
- This program is free software; you can redistribute it and/or
- modify it under the terms of the GNU General Public License
- as published by the Free Software Foundation; either version 2
- of the License, or (at your option) any later version.
-
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
-
- You should have received a copy of the GNU General Public License
- along with this program; if not, write to the Free Software
- Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
- ********************************************************************************
- File: src/jimm/comm/FromIcqSrvPacket.java
- Version: 0.4.3  Date: 2005/11/18
- Author(s): Manuel Linsmayer, Andreas Rossbacher
- *******************************************************************************/
-
-
 package jimm.comm;
 
 
@@ -30,36 +6,24 @@ import jimm.JimmException;
 
 public class FromIcqSrvPacket extends SnacPacket {
 
-
     // SRV_OFFLINEMSG packet subcommand
     public static final int SRV_OFFLINEMSG_SUBCMD = 0x0041;
 
-
     // SRV_DONEOFFLINEMSGS packet subcommand
     public static final int SRV_DONEOFFLINEMSGS_SUBCMD = 0x0042;
-
 
     // SRV_META packet subcommand and types
     public static final int SRV_META_SUBCMD = 0x07DA;
     public static final int SRV_META_GENERAL_TYPE = 0x00C8;
 
-
-    /****************************************************************************/
-    /****************************************************************************/
-    /****************************************************************************/
-
-
     // ICQ sequence number
     protected int icqSequence;
-
 
     // UIN
     protected String uin;
 
-
     // Subcommand
     protected int subcommand;
-
 
     // Constructor
     public FromIcqSrvPacket(int sequence, long reference, int snacFlags, int icqSequence, String uin, int subcommand, byte[] extData, byte[] data) {
@@ -69,42 +33,36 @@ public class FromIcqSrvPacket extends SnacPacket {
         this.subcommand = subcommand;
     }
 
-
     // Constructor
     public FromIcqSrvPacket(long reference, int snacFlags, String uin, int subcommand, byte[] extData, byte[] data) {
         this(-1, reference, snacFlags, -1, uin, subcommand, extData, data);
     }
-
 
     // Returns the ICQ sequence number
     public int getIcqSequence() {
         return (this.icqSequence);
     }
 
-
     // Sets the ICQ sequence number
     void setIcqSequence(int icqSequence) {
         this.icqSequence = icqSequence;
     }
-
 
     // Returns the UIN
     public String getUin() {
         return (new String(this.uin));
     }
 
-
     // Returns the subcommand
     public int getSubcommand() {
         return (this.subcommand);
     }
 
-
     // Returns the package as byte array
     public byte[] toByteArray() {
 
         // Allocate memory
-        byte buf[] = new byte[6 + 10 + 14 + this.data.length + (this.extData.length > 0 ? 2 + this.extData.length : 0)];
+        byte[] buf = new byte[6 + 10 + 14 + this.data.length + (this.extData.length > 0 ? 2 + this.extData.length : 0)];
 
         // Assemble FLAP header
         Util.putByte(buf, 0, 0x2A);   // FLAP.ID
@@ -144,7 +102,6 @@ public class FromIcqSrvPacket extends SnacPacket {
         return (buf);
 
     }
-
 
     // Parses given byte array and returns a FromIcqSrvPacket object
     public static Packet parse(byte[] buf, int off, int len) throws JimmException {
@@ -219,11 +176,8 @@ public class FromIcqSrvPacket extends SnacPacket {
 
     }
 
-
     // Parses given byte array and returns a FromIcqSrvPacket object
     public static Packet parse(byte[] buf) throws JimmException {
         return (FromIcqSrvPacket.parse(buf, 0, buf.length));
     }
-
-
 }

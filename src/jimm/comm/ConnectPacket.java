@@ -1,41 +1,13 @@
-/*******************************************************************************
- Jimm - Mobile Messaging - J2ME ICQ clone
- Copyright (C) 2003-04  Jimm Project
-
- This program is free software; you can redistribute it and/or
- modify it under the terms of the GNU General Public License
- as published by the Free Software Foundation; either version 2
- of the License, or (at your option) any later version.
-
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
-
- You should have received a copy of the GNU General Public License
- along with this program; if not, write to the Free Software
- Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
- ********************************************************************************
- File: src/jimm/comm/ConnectPacket.java
- Version: 0.4.3  Date: 2005/11/18
- Author(s): Manuel Linsmayer
- *******************************************************************************/
-
-
 package jimm.comm;
-
 
 import jimm.JimmException;
 
-
 public class ConnectPacket extends Packet {
-
 
     // Packet types
     public static final int SRV_CLI_HELLO = 1;
     public static final int CLI_COOKIE = 2;
     public static final int CLI_IDENT = 3;
-
 
     // Fixed values for various fields in CLI_IDENT packets
     public static final String FIXED_VERSION = "ICQ Inc. - Product of ICQ (TM).2003a.5.47.1.3800.85";
@@ -46,26 +18,20 @@ public class ConnectPacket extends Packet {
     public static final byte[] FIXED_VER_BUILD = {(byte) 0x0E, (byte) 0xD8};
     public static final byte[] FIXED_VER_SUBBUILD = {(byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x55};
 
-
     // Cookie (!= null only if packet type is CLI_COOKIE)
     protected byte[] cookie;
-
 
     // UIN (!= null only if packet type is CLI_IDENT)
     protected String uin;
 
-
     // Password (unencrypted, != null only if packet type is CLI_IDENT)
     protected String password;
-
 
     // Language that the client is using (!= null only if packet type is CLI_IDENT)
     protected String language;
 
-
     // Country where the client is located (!= null only if packet type is CLI_IDENT)
     protected String country;
-
 
     // Constructs a SRV_HELLO/CLI_HELLO packet
     public ConnectPacket(int sequence) {
@@ -77,12 +43,10 @@ public class ConnectPacket extends Packet {
         this.country = null;
     }
 
-
     // Constructs a SRV_HELLO/CLI_HELLO packet
     public ConnectPacket() {
         this(-1);
     }
-
 
     // Constructs a CLI_COOKIE packet
     public ConnectPacket(int sequence, byte[] cookie) {
@@ -95,12 +59,10 @@ public class ConnectPacket extends Packet {
         this.country = null;
     }
 
-
     // Constructs a CLI_COOKIE packet
     public ConnectPacket(byte[] cookie) {
         this(-1, cookie);
     }
-
 
     // Constructs a CLI_IDENT packet
     public ConnectPacket(int sequence, String uin, String password, String language, String country) {
@@ -112,12 +74,10 @@ public class ConnectPacket extends Packet {
         this.country = new String(country);
     }
 
-
     // Constructs a CLI_IDENT packet
     public ConnectPacket(String uin, String password, String language, String country) {
         this(-1, uin, password, language, country);
     }
-
 
     // Returns the packet type
     public int getType() {
@@ -130,7 +90,6 @@ public class ConnectPacket extends Packet {
         }
     }
 
-
     // Returns the cookie, or null if packet type is not CLI_COOKIE
     public byte[] getCookie() {
         if (this.getType() == ConnectPacket.CLI_COOKIE) {
@@ -142,7 +101,6 @@ public class ConnectPacket extends Packet {
         }
     }
 
-
     // Returns the UIN, or null if packet type is not CLI_IDENT
     public String getUin() {
         if (this.getType() == ConnectPacket.CLI_IDENT) {
@@ -151,7 +109,6 @@ public class ConnectPacket extends Packet {
             return (null);
         }
     }
-
 
     // Returns the password in clear text, or null if packet type is not CLI_IDENT
     public String getPassword() {
@@ -162,7 +119,6 @@ public class ConnectPacket extends Packet {
         }
     }
 
-
     // Returns the language that the client is using, or null if packet type is not CLI_IDENT
     public String getLanguage() {
         if (this.getType() == ConnectPacket.CLI_IDENT) {
@@ -172,7 +128,6 @@ public class ConnectPacket extends Packet {
         }
     }
 
-
     // Returns the country where the client is located, or null if packet type is not CLI_IDENT
     public String getCountry() {
         if (this.getType() == ConnectPacket.CLI_IDENT) {
@@ -181,7 +136,6 @@ public class ConnectPacket extends Packet {
             return (null);
         }
     }
-
 
     // Returns the package as byte array
     public byte[] toByteArray() {
@@ -312,7 +266,6 @@ public class ConnectPacket extends Packet {
 
     }
 
-
     // Parses given byte array and returns a Packet object
     public static Packet parse(byte[] buf, int off, int len) throws JimmException {
 
@@ -423,11 +376,8 @@ public class ConnectPacket extends Packet {
 
     }
 
-
     // Parses given byte array and returns a Packet object
     public static Packet parse(byte[] buf) throws JimmException {
         return (ConnectPacket.parse(buf, 0, buf.length));
     }
-
-
 }

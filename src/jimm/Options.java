@@ -1,48 +1,3 @@
-/*******************************************************************************
- Jimm - Mobile Messaging - J2ME ICQ clone
- Copyright (C) 2003-05  Jimm Project
-
- This program is free software; you can redistribute it and/or
- modify it under the terms of the GNU General Public License
- as published by the Free Software Foundation; either version 2
- of the License, or (at your option) any later version.
-
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
-
- You should have received a copy of the GNU General Public License
- along with this program; if not, write to the Free Software
- Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
- *******************************************************************************
- File: src/jimm/Options.java
- Version: 0.4.3  Date: 2005/11/18
- Author(s): Manuel Linsmayer, Andreas Rossbacher, Artyomov Denis
- ******************************************************************************/
-
-
-/*******************************************************************************
- Current record store format:
-
- Record #1: VERSION               (UTF8)
- Record #2: OPTION KEY            (BYTE)
- OPTION VALUE          (Type depends on key)
- OPTION KEY            (BYTE)
- OPTION VALUE          (Type depends on key)
- OPTION KEY            (BYTE)
- OPTION VALUE          (Type depends on key)
- ...
-
- Option key            Option value
- 0 -  63 (00XXXXXX)  UTF8
- 64 - 127 (01XXXXXX)  INTEGER
- 128 - 191 (10XXXXXX)  BOOLEAN
- 192 - 224 (110XXXXX)  LONG
- 225 - 255 (111XXXXX)  SHORT, BYTE-ARRAY (scrambled String)
- ******************************************************************************/
-
-
 package jimm;
 
 import jimm.comm.Util;
@@ -68,9 +23,7 @@ import javax.microedition.lcdui.TextField;
 import javax.microedition.rms.RecordStore;
 import javax.microedition.rms.RecordStoreException;
 
-
 public class Options {
-
 
     // Option keys
     public static final int OPTION_UIN = 0;   /* String  */
@@ -380,21 +333,16 @@ public class Options {
 
 
 
-    final static private int[] colors =
-            {
+    final static private int[] colors = {
                     0xFFFFFF, 0x000000, 0x0000FF, 0x404040,
                     0x000000, 0xFFFFFF, 0x00FFFF, 0x808080,
                     0x000080, 0xFFFFFF, 0x00FFFF, 0xFFFFFF
-            };
+    };
 
     // Retrieves color value from color scheme
     public int getSchemeColor(int type) {
         return (colors[getIntOption(OPTION_COLOR_SCHEME) * 4 + type - 1]);
     }
-
-
-    /**************************************************************************/
-    /**************************************************************************/
 
 
     // Form for editing option values
@@ -403,20 +351,20 @@ public class Options {
         int lastSortMethod, lastColorScheme;
 
         // Commands
-        private Command backCommand;
-        private Command saveCommand;
+        private final Command backCommand;
+        private final Command saveCommand;
         //#sijapp cond.if target is "MOTOROLA"#
-        private Command selectCommand;
+        private final Command selectCommand;
         //#sijapp cond.end#
 
         // Options menu
-        private List optionsMenu;
+        private final List optionsMenu;
 
         // Menu event list
-        private int[] eventList;
+        private final int[] eventList;
 
         // Options form
-        private Form optionsForm;
+        private final Form optionsForm;
 
         // Static constants for menu actios
         private static final int OPTIONS_ACCOUNT = 0;
@@ -566,10 +514,7 @@ public class Options {
                     // #sijapp cond.if target isnot "MOTOROLA"#
                     this.connTypeChoiceGroup.append(ResourceBundle.getString("shadow_con"), null);
                     // #sijapp cond.end#
-                    if (Options.this.getIntOption(Options.OPTION_CONN_TYPE) == 0)
-                        this.connTypeChoiceGroup.setSelectedIndex(0, false);
-                    else
-                        this.connTypeChoiceGroup.setSelectedIndex(0, true);
+                    this.connTypeChoiceGroup.setSelectedIndex(0, Options.this.getIntOption(Options.OPTION_CONN_TYPE) != 0);
                     // #sijapp cond.if target isnot "MOTOROLA"#
                     this.connTypeChoiceGroup.setSelectedIndex(1, Options.this.getBooleanOption(Options.OPTION_SHADOW_CON));
                     // #sijapp cond.end#
@@ -865,9 +810,7 @@ public class Options {
 
                             int newSortMethod = 0;
 
-                            if (this.clHideOfflineChoiceGroup.isSelected(0)) {
-                                newSortMethod = 0;
-                            } else {
+                            if (!this.clHideOfflineChoiceGroup.isSelected(0)) {
                                 newSortMethod = this.clSortByChoiceGroup.getSelectedIndex();
                             }
 

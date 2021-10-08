@@ -32,12 +32,12 @@ Author(s): Manuel Linsmayer, Andreas Rossbacher
 	<!--  Change this to the directory where a MIDP SDK is installed. You can   -->
 	<!--  use both the slash and the backslash for separating path              -->
 	<!--  components.                                                           -->
-	<property name="DEFAULT/midp"      value="C:\j2me_dev\tools\WTK2.5.2_01"          />
-	<property name="MIDP2/midp"        value="C:\j2me_dev\tools\WTK2.5.2_01"          />
-	<property name="RIM/midp"          value="C:\j2me_dev\tools\WTK2.5.2_01"          />
-	<property name="SIEMENS1/midp"     value="C:\siemens\SMTK"                  />
-	<property name="SIEMENS2/midp"     value="C:\siemens\SMTK"                  />
-	<property name="MOTOROLA/midp"     value="C:\j2me_dev\tools\WTK2.5.2_01"          />
+	<property name="DEFAULT/midp"      value="D:\j2me_dev\tools\WTK"          />
+	<property name="MIDP2/midp"        value="D:\j2me_dev\tools\WTK"          />
+	<property name="RIM/midp"          value="D:\j2me_dev\tools\WTK"          />
+	<property name="SIEMENS1/midp"     value="D:\j2me_dev\tools\SMTK"                  />
+	<property name="SIEMENS2/midp"     value="D:\j2me_dev\tools\SMTK"                  />
+	<property name="MOTOROLA/midp"     value="D:\j2me_dev\tools\WTK"          />
 	<!--  *******************************************************************   -->
 	<!--  This property must point at the MIDP API classes and all extension    -->
 	<!--  classes required by the chosen target.                                -->
@@ -50,7 +50,7 @@ Author(s): Manuel Linsmayer, Andreas Rossbacher
 	<!--  *******************************************************************   -->
 	<!--  Change this to the directory where ProGuard is installed. You can     -->
 	<!--  use both the slash and the backslash for separating path components.  -->
-	<property name="proguard"          value="C:\j2me_dev\tools\proguard5.2.1"        />
+	<property name="proguard"          value="D:\j2me_dev\tools\proguard"        />
 	<!--  *******************************************************************   -->
 	<!--  This property must point at the ProGuard JAR file, normally found     -->
 	<!--  in the lib directory of the ProGuard distribution.                    -->

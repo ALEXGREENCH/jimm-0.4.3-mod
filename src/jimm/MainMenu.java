@@ -1,26 +1,3 @@
-/*******************************************************************************
- Jimm - Mobile Messaging - J2ME ICQ clone
- Copyright (C) 2003-05  Jimm Project
-
- This program is free software; you can redistribute it and/or
- modify it under the terms of the GNU General Public License
- as published by the Free Software Foundation; either version 2
- of the License, or (at your option) any later version.
-
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
-
- You should have received a copy of the GNU General Public License
- along with this program; if not, write to the Free Software
- Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
- ********************************************************************************
- File: src/jimm/MainMenu.java
- Version: 0.4.3  Date: 2005/11/18
- Author(s): Manuel Linsmayer, Andreas Rossbacher
- *******************************************************************************/
-
 package jimm;
 
 import javax.microedition.lcdui.Alert;
@@ -70,16 +47,16 @@ public class MainMenu implements CommandListener {
 
 
     // Abort command
-    private static Command backCommand = new Command(ResourceBundle.getString("back"), Command.BACK, 1);
+    private static final Command backCommand = new Command(ResourceBundle.getString("back"), Command.BACK, 1);
 
     // Send command
-    private static Command sendCommand = new Command(ResourceBundle.getString("send"), Command.OK, 1);
+    private static final Command sendCommand = new Command(ResourceBundle.getString("send"), Command.OK, 1);
 
     // Select command
-    private static Command selectCommand = new Command(ResourceBundle.getString("select"), Command.OK, 1);
+    private static final Command selectCommand = new Command(ResourceBundle.getString("select"), Command.OK, 1);
 
     // #sijapp cond.if target is "MOTOROLA" #
-    private static Command exitCommand = new Command(ResourceBundle.getString("exit_button"), Command.EXIT, 1);
+    private static final Command exitCommand = new Command(ResourceBundle.getString("exit_button"), Command.EXIT, 1);
     //#sijapp cond.end# 
 
     // List for selecting a online status

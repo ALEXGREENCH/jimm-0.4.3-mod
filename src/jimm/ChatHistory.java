@@ -1,26 +1,3 @@
-/*******************************************************************************
- Jimm - Mobile Messaging - J2ME ICQ clone
- Copyright (C) 2003-05  Jimm Project
-
- This program is free software; you can redistribute it and/or
- modify it under the terms of the GNU General Public License
- as published by the Free Software Foundation; either version 2
- of the License, or (at your option) any later version.
-
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
-
- You should have received a copy of the GNU General Public License
- along with this program; if not, write to the Free Software
- Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
- ********************************************************************************
- File: src/jimm/ChatHistory.java
- Version: 0.4.3  Date: 2005/11/18
- Author(s): Andreas Rossbacher, Artyomov Denis, Dmitry Tunin
- *******************************************************************************/
-
 package jimm;
 
 import java.util.Enumeration;
@@ -40,10 +17,10 @@ import DrawControls.VirtualList;
 import DrawControls.VirtualListCommands;
 
 class MessData {
-    private boolean incoming;
-    private Date time;
-    private String from;
-    private int textOffset;
+    private final boolean incoming;
+    private final Date time;
+    private final String from;
+    private final int textOffset;
 
     public MessData(boolean incoming, Date time, String from, int textOffset) {
         this.incoming = incoming;
@@ -157,7 +134,7 @@ class ChatTextList extends TextList implements VirtualListCommands {
 }
 
 public class ChatHistory {
-    private Hashtable historyTable;
+    private final Hashtable historyTable;
     private int counter;
 
     // Adds selected message to history

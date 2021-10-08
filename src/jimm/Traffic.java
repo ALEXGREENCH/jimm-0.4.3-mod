@@ -1,28 +1,4 @@
-/*******************************************************************************
- Jimm - Mobile Messaging - J2ME ICQ clone
- Copyright (C) 2003-04  Jimm Project
-
- This program is free software; you can redistribute it and/or
- modify it under the terms of the GNU General Public License
- as published by the Free Software Foundation; either version 2
- of the License, or (at your option) any later version.
-
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
-
- You should have received a copy of the GNU General Public License
- along with this program; if not, write to the Free Software
- Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
- ********************************************************************************
- File: src/jimm/Traffic.java
- Version: 0.4.3  Date: 2005/11/18
- Author: Andreas Rossbacher
- *******************************************************************************/
-
 //#sijapp cond.if modules_TRAFFIC is "true" #
-
 package jimm;
 
 import java.io.ByteArrayInputStream;
@@ -41,7 +17,6 @@ import javax.microedition.rms.RecordStore;
 import javax.microedition.rms.RecordStoreException;
 
 import jimm.util.ResourceBundle;
-
 
 public class Traffic {
 
@@ -368,11 +343,6 @@ public class Traffic {
     public void setIsActive(boolean _active) {
         active = _active;
     }
-
-    /****************************************************************************/
-    /****************************************************************************/
-    /****************************************************************************/
-
 
     // Screen for Traffic information
     public class TrafficScreen implements CommandListener {

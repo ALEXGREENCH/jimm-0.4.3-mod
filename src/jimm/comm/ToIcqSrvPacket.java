@@ -1,27 +1,3 @@
-/*******************************************************************************
- Jimm - Mobile Messaging - J2ME ICQ clone
- Copyright (C) 2003-04  Jimm Project
-
- This program is free software; you can redistribute it and/or
- modify it under the terms of the GNU General Public License
- as published by the Free Software Foundation; either version 2
- of the License, or (at your option) any later version.
-
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
-
- You should have received a copy of the GNU General Public License
- along with this program; if not, write to the Free Software
- Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
- ********************************************************************************
- File: src/jimm/comm/ToIcqSrvPacket.java
- Version: 0.4.3  Date: 2005/11/18
- Author(s): Manuel Linsmayer, Andreas Rossbacher
- *******************************************************************************/
-
-
 package jimm.comm;
 
 
@@ -44,23 +20,14 @@ public class ToIcqSrvPacket extends SnacPacket {
     public static final int CLI_META_REQINFO_TYPE = 0x04D0;   // doesn't work
     public static final int CLI_META_REQMOREINFO_TYPE = 0x04B2;
 
-
-    /****************************************************************************/
-    /****************************************************************************/
-    /****************************************************************************/
-
-
     // ICQ sequence number
     protected int icqSequence;
-
 
     // UIN
     protected String uin;
 
-
     // Subcommand
     protected int subcommand;
-
 
     // Constructor
     public ToIcqSrvPacket(int sequence, long reference, int snacFlags, int icqSequence, String uin, int subcommand, byte[] extData, byte[] data) {
